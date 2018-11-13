@@ -3,6 +3,7 @@ pragma solidity ^0.4.16;
 contract SMContract {
 
     address private utility;
+    uint private counter;
 
     struct Reading{
       address uAddr;
@@ -18,19 +19,21 @@ contract SMContract {
 
     constructor() public {
         utility = msg.sender;
+        counter = 1;
     }
 
-    function newReading(uint256 readingNo, uint256 power, uint256 voltage, uint256 current, uint256 energy) public {
-    Reading storage _newReading = _readings[readingNo++];
+    function newReading( uint256 power, uint256 voltage, uint256 current, uint256 energy) public {
+    //Reading storage _newReading = _readings[readingNo++];
 
-      _newReading.uAddr = msg.sender;
-      _newReading.power = power;
-      _newReading.voltage = voltage;
-      _newReading.current = current;
-      _newReading.energy = energy;
-      _newReading.readingNo = readingsArr.length++;
-      
-    readingsArr.push(readingNo);
+      _readings[counter].uAddr = msg.sender;
+      _readings[counter].power = power;
+      _readings[counter].voltage = voltage;
+      _readings[counter].current = current;
+      _readings[counter].energy = energy;
+      _readings[counter].readingNo = readingsArr.length++;
+
+    readingsArr.push(counter);
+    counter++;
     }
 
     /*function getData(uint readingNo) public constant returns(uint, uint, uint, uint) {
