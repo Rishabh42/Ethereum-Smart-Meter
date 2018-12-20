@@ -22,7 +22,12 @@ contract SMContract {
         counter = 1;
     }
 
-    function newReading( uint256 power, uint256 voltage, uint256 current, uint256 energy) public {
+    modifier notUtility{
+        require(msg.sender != utility);
+        _;
+    }
+
+    function newReading( uint256 power, uint256 voltage, uint256 current, uint256 energy) notUtility public {
     //Reading storage _newReading = _readings[readingNo++];
 
       _readings[counter].uAddr = msg.sender;
