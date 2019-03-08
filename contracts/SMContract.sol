@@ -1,4 +1,4 @@
-pragma solidity ^0.4.16;
+pragma solidity >=0.4.22 <0.6.0;
 
 contract SMContract {
 
@@ -7,10 +7,10 @@ contract SMContract {
 
     struct Reading{
       address uAddr;
-      uint256 power;
-      uint256 voltage;
-      uint256 current;
-      uint256 energy;
+//      uint256 power;
+//      uint256 voltage;
+//      uint256 current;
+      uint256 energy_consumed;
       uint256 readingNo;
     }
 
@@ -27,14 +27,14 @@ contract SMContract {
         _;
     }
 
-    function newReading( uint256 power, uint256 voltage, uint256 current, uint256 energy) notUtility public {
+    function newReading(uint256 energy) notUtility public {
     //Reading storage _newReading = _readings[readingNo++];
 
       _readings[counter].uAddr = msg.sender;
-      _readings[counter].power = power;
-      _readings[counter].voltage = voltage;
-      _readings[counter].current = current;
-      _readings[counter].energy = energy;
+//      _readings[counter].power = power;
+//      _readings[counter].voltage = voltage;
+//      _readings[counter].current = current;
+      _readings[counter].energy_consumed = energy;
       _readings[counter].readingNo = readingsArr.length++;
 
     readingsArr.push(counter);
