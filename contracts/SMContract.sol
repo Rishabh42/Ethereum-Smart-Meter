@@ -7,12 +7,11 @@ contract SMContract {
 
     struct Reading{
       address uAddr;
-//      uint256 power;
-//      uint256 voltage;
-//      uint256 current;
       uint256 energy_consumed;
       uint256 readingNo;
     }
+    
+    event readingEvent(address _user, uint256 _reading);
 
     mapping (uint256=> Reading) public _readings;
     uint256[] public readingsArr;
@@ -28,20 +27,14 @@ contract SMContract {
     }
 
     function newReading(uint256 energy) notUtility public {
-    //Reading storage _newReading = _readings[readingNo++];
-
+        
       _readings[counter].uAddr = msg.sender;
-//      _readings[counter].power = power;
-//      _readings[counter].voltage = voltage;
-//      _readings[counter].current = current;
       _readings[counter].energy_consumed = energy;
       _readings[counter].readingNo = readingsArr.length++;
 
     readingsArr.push(counter);
     counter++;
+    emit readingEvent(msg.sender, energy);
     }
 
-    /*function getData(uint readingNo) public constant returns(uint, uint, uint, uint) {
-        return (readingsArr[readingNo].power, readingsArr[readingNo].voltage, readingsArr[readingNo].current, readingsArr[readingNo].energy);
-    }*/
   }
