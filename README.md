@@ -1,5 +1,4 @@
 # Ethereum-Smart-Meter
-Securing smart meters/ energy meters using Ethereum blockchain and smart contracts:
 This project provides a cost-effective way of linking a standard digital energy meter with blockchain by hooking it up with a Raspberry Pi which extracts the energy pulses from the meter and then simultaneously deploys it on the Ethereum blockchain. 
 
 # Circuit Diagram of the setup:
