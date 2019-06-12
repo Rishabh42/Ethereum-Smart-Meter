@@ -1,5 +1,7 @@
 import RPi.GPIO as GPIO
 import time
+import contract_inst
+
 GPIO.setmode(GPIO.BOARD)
 
 pulse=3
@@ -11,11 +13,13 @@ reading=0
 
 def energy_pulse(pulse):
     global counter
-    global reading	
+    global reading
     if GPIO.input(pulse)> 0.5 :
         counter +=1
 	    reading = counter * 0.3125
         print("energy count is:", reading)
+        contract_inst.broadcast_reading(reading)
+        print("carbon credits:", contract_inst.check_reading())
 
 GPIO.add_event_detect(pulse, GPIO.RISING, callback=energy_pulse)
 
@@ -28,4 +32,3 @@ while not done:
         print("Program Ended");
         done=True;
 GPIO.cleanup()
-
