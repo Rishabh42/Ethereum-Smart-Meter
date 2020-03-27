@@ -14,7 +14,7 @@ def broadcast_reading(counter):
 
     nonce = w3.eth.getTransactionCount(wallet_address)
 
-    #Chain parameters
+    #Calling the newReading function of contract to log readings
     txn_dict = contract.functions.newReading(counter).buildTransaction({
         'chainId': 3,
         'gas': 140000,
