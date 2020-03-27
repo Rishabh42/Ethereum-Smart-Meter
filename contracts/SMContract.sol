@@ -16,11 +16,13 @@ contract SMContract {
     mapping (uint256=> Reading) public _readings;
     uint256[] public readingsArr;
 
+    //log the public address of the utility and store it in a variable
     constructor() public {
         utility = msg.sender;
         counter = 1;
     }
 
+    //log new readings
     function newReading(uint256 energy) public {
 
       _readings[counter].uAddr = msg.sender;
@@ -32,6 +34,7 @@ contract SMContract {
     emit readingEvent(msg.sender, energy);
     }
 
+    //Carbon credits calculation
     function returnCarbonCredits() public view returns(uint)  {
         uint carbonCredits = 0;
         if(readingsArr.length >= 10){
