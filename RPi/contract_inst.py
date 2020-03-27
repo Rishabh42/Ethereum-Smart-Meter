@@ -27,10 +27,10 @@ def broadcast_reading(counter):
     txn_hash = w3.eth.sendRawTransaction(signed_txn.rawTransaction)
     txn_receipt = None
 
-    count = 0
+    #count = 0
 
     #check if the transaction happened and return the txhash
-    while txn_receipt is None and (count < 30):
+    while txn_receipt is None:
         txn_receipt = w3.eth.getTransactionReceipt(txn_hash)
         print(txn_receipt)
         time.sleep(10)
