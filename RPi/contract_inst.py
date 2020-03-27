@@ -14,6 +14,7 @@ def broadcast_reading(counter):
 
     nonce = w3.eth.getTransactionCount(wallet_address)
 
+    #Chain parameters
     txn_dict = contract.functions.newReading(counter).buildTransaction({
         'chainId': 3,
         'gas': 140000,
@@ -21,12 +22,14 @@ def broadcast_reading(counter):
         'nonce': nonce,
     })
 
+    #signing the transaction 
     signed_txn = w3.eth.account.signTransaction(txn_dict, private_key = wallet_private_key)
     txn_hash = w3.eth.sendRawTransaction(signed_txn.rawTransaction)
     txn_receipt = None
 
     count = 0
 
+    #check if the transaction happened and return the txhash
     while txn_receipt is None and (count < 30):
         txn_receipt = w3.eth.getTransactionReceipt(txn_hash)
         print(txn_receipt)
