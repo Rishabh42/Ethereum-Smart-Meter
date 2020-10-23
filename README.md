@@ -1,5 +1,5 @@
 # Ethereum-Smart-Meter
-This project provides a cost-effective way of linking a standard digital energy meter with blockchain by hooking it up with a Raspberry Pi which extracts the energy pulses from the meter and then simultaneously deploys it on the Ethereum blockchain.
+This project provides a cost-effective way of linking a standard digital energy meter with blockchain by connecting it with a Raspberry Pi which extracts the energy pulses from the meter and then simultaneously deploys them on the Ethereum blockchain.
 
 Smart contracts for energy trade: https://github.com/Rishabh42/Energy-trade-contracts
 
@@ -7,7 +7,7 @@ Smart contracts for energy trade: https://github.com/Rishabh42/Energy-trade-cont
 This project uses an optocoupler circuit to connect the energy meter and the Raspberry Pi, the full circuit diagram is as shown below:
 ![image](https://user-images.githubusercontent.com/20457952/56360297-da643380-6201-11e9-901e-14394f298e0d.png)
 
-An optocoupler should be fabricated and 2 jumper wires should be used for connecting it to the RPi as shown. This project records pulses on pin number 3 of the RPi through GPIO, and the other one is the ground pin which is connected to pin 39.
+This project requires you to fabricate an optocoupler which needs to be connectedto the RPi using 2 jumper wires as shown. The setup records pulses on pin number 3 of the RPi through GPIO (provided you have connected the other jumper to one of the ground pins, in this case: pin no. 39).
 
 Aerial view of the setup:
 ![image](https://user-images.githubusercontent.com/20457952/56360744-2c598900-6203-11e9-93c8-7b57d5f5cd27.png)
